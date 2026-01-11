@@ -1,0 +1,13 @@
+export function AboutUs() {
+
+    return (
+        <section className="AboutUs container">
+            <h1>AboutUs Books and us...</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Optio dolore sapiente, iste animi corporis nisi atque tempora assumenda dolores.
+                Nobis nam dolorem rerum illo facilis nemo sit voluptatibus laboriosam necessitatibus!
+            </p>
+        </section>
+    )
+}
