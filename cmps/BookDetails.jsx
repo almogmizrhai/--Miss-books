@@ -26,8 +26,21 @@ export function BookDetails({bookId, onBack}){
         return txt
     }
 
+    function checkPublishedDate(publishedDate){
+        const currentDate = new Date()
+        const published = new Date(publishedDate)
+        const diffTime = currentDate - published
+        const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365)
+        let txt = ''
+        
+        if(diffYears > 10) txt = 'Vintage Book'
+        else if (diffYears < 1) txt = 'New Book'
+
+        return txt
+    }
+
     if (!book) return <div>Loading...</div>
-    const {title, listPrice, pageCount} = book
+    const {title, listPrice, pageCount, publishedDate} = book
     return(
         <section className = "book-details">
             <h1>Book Title: {title}</h1>
@@ -36,9 +49,8 @@ export function BookDetails({bookId, onBack}){
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
             </p>
-            <p>
-                Page Count: {pageCount} - {checkPageCount(pageCount)}
-            </p>
+            <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
+            <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
             <button onClick={onBack}>Back</button>
         </section>
     )
