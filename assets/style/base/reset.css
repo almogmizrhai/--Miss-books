@@ -35,7 +35,7 @@ a {
 }
 
 a:hover {
-	animation: jello;
+	animation: bounce;
 	animation-duration: 1s;
 }
 

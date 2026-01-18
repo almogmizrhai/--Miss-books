@@ -1,8 +1,26 @@
+.books-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    list-style: none;
+    gap: 15px;
+}
+
 .books-list ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     justify-content: center;
     gap: 10px;
+}
+
+.books-list li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 5px;
+    background-color: #7480C9;
+    border-radius: 8px;
+    --animate-duration: 0.4s;
 }
 
 .books-list ul li {
@@ -30,4 +48,9 @@
 .books-list li:hover img {
     animation: bounceIn;
     animation-duration: 2s;
+}
+
+.btn-action{
+    gap: 10px;
+    display: flex;
 }

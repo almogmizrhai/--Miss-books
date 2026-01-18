@@ -1,4 +1,4 @@
-import { UserPreview } from '../cmps/UserPreview.jsx'
+import { UserPreview } from '../cmps/BookFilter.jsx'
 
 export function Home() {
     return (
