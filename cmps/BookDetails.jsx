@@ -47,7 +47,7 @@ export function BookDetails({bookId, onBack}){
         return priceTag
     }
 
-    if (!book) return <div>Loading...</div>
+    if (!book) return <div className="loader">Loading...</div>
     const {title, listPrice, pageCount, publishedDate  } = book
     return(
         <section className = "book-details">

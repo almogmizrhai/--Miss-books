@@ -26,7 +26,7 @@ export function BookIndex(){
     }
 
     console.log('books:', books)
-    if (!books) return <div>Loading...</div>
+    if (!books) return <div className="loader">Loading...</div>
 
     function onRemoveBook(bookId, {target}){
         const elLi = target.closest('li')
