@@ -20,8 +20,12 @@
     font-weight: bold;
 }
 
-.book-details h4 {
-    font-size: 0.8em;
+.book-details h2 {
+    font-weight:normal
+
+    span{
+        text-align: center;
+    }
 }
 
 .highPrice {
@@ -31,6 +35,12 @@
 .lowPrice {
     color: green;
 }
+
+.on-sale {
+    color: red;
+    padding: 4px 8px;
+}
+
 
 .book-details .book-img {
     width: 200px

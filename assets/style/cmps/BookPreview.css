@@ -2,11 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
     gap: 5px;
     border-radius: 5px;
     width: fit-content;
     padding: 10px;
+
+    h3{
+        display: grid;
+        justify-items: center;
+        
+        p{
+          text-align: center;
+          font-weight: normal;
+       }
+    }
+
+    img{
+        width: 120px;   
+        height: 180px;
+        object-fit: cover; 
+        margin-bottom: 10px;
+    }
 }
 
 .on-sale-icon {

@@ -5,36 +5,15 @@
     gap: 15px;
 }
 
-.books-list ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    justify-content: center;
-    gap: 10px;
-}
-
 .books-list li{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
-    padding-bottom: 5px;
     background-color: #7480C9;
     border-radius: 8px;
+    min-height: 400px;
     --animate-duration: 0.4s;
-}
-
-.books-list ul li {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: start;
-
-    border-radius: 15px;
-    gap: 5px;
-    padding: 10px;
-    background: linear-gradient(360deg, #4070c4, #a7ffd6);
 }
 
 .close {
@@ -51,6 +30,6 @@
 }
 
 .btn-action{
-    gap: 10px;
     display: flex;
+    gap: 10px;
 }
