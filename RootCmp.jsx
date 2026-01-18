@@ -1,4 +1,5 @@
-  const { useState } = React
+//root-cmp
+const { useState } = React
 
 import { Home } from './Pages/Home.jsx'
 import { AboutUs } from './Pages/AboutUs.jsx'
@@ -6,7 +7,7 @@ import { BookIndex } from './Pages/BookIndex.jsx'
 
 
 export function App() {
-    const [page , setPage] = useState('books')
+    const [page , setPage] = useState('home')
 
     return (
         <section className="app">
