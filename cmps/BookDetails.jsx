@@ -32,11 +32,19 @@ export function BookDetails({bookId, onBack}){
         const diffTime = currentDate - published
         const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365)
         let txt = ''
-        
+
         if(diffYears > 10) txt = 'Vintage Book'
         else if (diffYears < 1) txt = 'New Book'
 
         return txt
+    }
+
+    function checkPrice(price){
+        let priceTag = ''
+        if (price >= 150) priceTag ='highPrice'
+        else if(price <= 20) priceTag = 'lowPrice'
+
+        return priceTag
     }
 
     if (!book) return <div>Loading...</div>
@@ -44,7 +52,7 @@ export function BookDetails({bookId, onBack}){
     return(
         <section className = "book-details">
             <h1>Book Title: {title}</h1>
-            <h2>Book Price: {listPrice.amount}</h2>
+            <h2>Book Price: <p className={checkPrice(listPrice.amount)}> {listPrice.amount}</p> </h2>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!

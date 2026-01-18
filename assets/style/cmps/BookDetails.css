@@ -20,8 +20,12 @@
     font-weight: bold;
 }
 
-.book-details h4 {
-    font-size: 0.8em;
+.book-details h2 {
+    font-weight:normal
+    
+    p{
+        text-align: center;
+    }
 }
 
 .highPrice {
