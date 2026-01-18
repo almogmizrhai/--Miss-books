@@ -48,11 +48,14 @@ export function BookDetails({bookId, onBack}){
     }
 
     if (!book) return <div>Loading...</div>
-    const {title, listPrice, pageCount, publishedDate} = book
+    const {title, listPrice, pageCount, publishedDate  } = book
     return(
         <section className = "book-details">
             <h1>Book Title: {title}</h1>
-            <h2>Book Price: <p className={checkPrice(listPrice.amount)}> {listPrice.amount}</p> </h2>
+            <h2>Book Price: <span className={checkPrice(listPrice.amount)}> {listPrice.amount}</span> </h2>
+            {listPrice.amount && (
+                <span className="on-sale">🔥 On Sale! 🔥</span>
+            )}
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!

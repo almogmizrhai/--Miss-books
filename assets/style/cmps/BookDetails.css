@@ -22,8 +22,8 @@
 
 .book-details h2 {
     font-weight:normal
-    
-    p{
+
+    span{
         text-align: center;
     }
 }
@@ -35,6 +35,12 @@
 .lowPrice {
     color: green;
 }
+
+.on-sale {
+    color: red;
+    padding: 4px 8px;
+}
+
 
 .book-details .book-img {
     width: 200px
