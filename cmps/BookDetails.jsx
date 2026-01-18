@@ -1,6 +1,7 @@
 //Book Details
 
 import { bookService } from "../services/book.service.js"
+import { LongTxt } from "./LongTxt.jsx"
 
 const { useState, useEffect } = React
 
@@ -48,7 +49,7 @@ export function BookDetails({bookId, onBack}){
     }
 
     if (!book) return <div className="loader">Loading...</div>
-    const {title, listPrice, pageCount, publishedDate  } = book
+    const {title, listPrice, pageCount, publishedDate, description} = book
     return(
         <section className = "book-details">
             <h1>Book Title: {title}</h1>
@@ -56,12 +57,9 @@ export function BookDetails({bookId, onBack}){
             {listPrice.amount && (
                 <span className="on-sale">🔥 On Sale! 🔥</span>
             )}
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
-            </p>
             <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
             <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
+            <p>description:  {description} </p> 
             <button onClick={onBack}>Back</button>
         </section>
     )
