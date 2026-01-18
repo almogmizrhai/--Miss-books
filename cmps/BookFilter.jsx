@@ -1,52 +1,36 @@
 //Book Filter
 
-const { useState, useEffect } = React
+import { utilService } from "../services/util.service.js"
 
-export function BookFilter({ defaultFilter, onSetFilterBy }) {
-    const [filterByToEdit, setFilterByToEdit] = useState(defaultFilter)
+const { useEffect, useState, useRef } = React
+
+export function BookFilter({ filterBy, onFilterBy }) {
+
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const initialFilterBy = useRef({ ...filterBy })
+
+    const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500))
 
     useEffect(() => {
-        setFilterByToEdit(defaultFilter)
-    }, [defaultFilter])
+        onSetFilterDebounce.current(filterByToEdit)
+    }, [filterByToEdit])
 
     function handleChange({ target }) {
-        let field = target.name
-        let value = target.value
-
-        if (target.type === 'number') {
-            if (value === '') {
-                value = ''
-            } else {
-                value = Number(value)
-            }
-
-        }
-
-        setFilterByToEdit(prevFilter => ({
-            ...prevFilter,
-            [field]: value
-        }))
+        const { name, type } = target
+        const value = type === 'number' ? +target.value : target.value
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, [name]: value }))
     }
 
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilterBy(filterByToEdit)
+    function reset() {
+        setFilterByToEdit(initialFilterBy.current)
     }
 
-    const { txt, minPrice } = filterByToEdit
-
-    return (
-        <section className="books-filter">
-            <form onSubmit={onSubmitFilter}>
-
-                <label htmlFor="txt">Search by title:</label>
-                <input onChange={handleChange} value={txt} name="txt" id="txt" type="text" placeholder="Book title"/>
-
-                <label htmlFor="minPrice">Search by price:</label>
-                <input onChange={handleChange} value={minPrice || ''} name="minPrice" id="minPrice" type="number"placeholder="Book price" />
-
-                <button>Filter</button>
-            </form>
-        </section>
-    )
+    return <section className='books-filter'>
+        <h3>Filter</h3>
+        <p>Search by title:</p>
+        <input onChange={handleChange} value={filterByToEdit.title} type="text" name='title' placeholder='Insert book name' />
+        <p>Search by price:</p>
+        <input onChange={handleChange} value={filterByToEdit.minPrice} type="number" name='minPrice' placeholder='Insert book price' />
+        <button onClick={reset}>Reset</button>
+    </section>
 }

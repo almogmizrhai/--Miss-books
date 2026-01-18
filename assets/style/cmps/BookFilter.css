@@ -2,11 +2,13 @@
     padding: 10px;
     background: #7480C9;
     border-radius: 5px;
-}
-
-.books-filter form{
     display: grid;
     align-items: center;
     justify-content: center;
     gap: 5px;
+
+    input{
+        border-radius: inherit;
+    }
 }
+
