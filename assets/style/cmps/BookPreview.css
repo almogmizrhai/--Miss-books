@@ -1,7 +1,12 @@
 .book-prev {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-items: center;
     gap: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 10px;
 }
 
 .on-sale-icon {

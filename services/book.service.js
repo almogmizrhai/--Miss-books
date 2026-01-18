@@ -1,8 +1,9 @@
+//Book Service
+
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const BOOK_KEY = 'bookDB'
-var gFilterBy = { title: '', amount: 0 }
 _createBooks()
 
 export const bookService = {
@@ -12,23 +13,27 @@ export const bookService = {
     save,
     getEmptyBook,
     getNextBookId,
-    getFilterBy,
-    setFilterBy
+    getDefaultFilter,
 }
 
-function query() {
+function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)
         .then(books => {
-            if (gFilterBy.title) {
-                const regex = new RegExp(gFilterBy.title, 'i')
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
                 books = books.filter(book => regex.test(book.title))
             }
-            if (gFilterBy.amount) {
-                books = books.filter(book => book.listPrice.amount >= gFilterBy.amount)
+
+            if (filterBy.minPrice) {
+                books = books.filter(book =>
+                    book.listPrice.amount >= filterBy.minPrice
+                )
             }
             return books
         })
+        .catch(err => console.log('err:', err))
 }
+
 
 
 function get(bookId) {
@@ -51,14 +56,8 @@ function getEmptyBook(title = '', listPrice = {amount: 0, currencyCode: 'EUR', i
     return { id: '',title, listPrice }
 }
 
-function getFilterBy() {
-    return { ...gFilterBy }
-}
-
-function setFilterBy(filterBy = {}) {
-    if (filterBy.title !== undefined) gFilterBy.title = filterBy.title
-    if (filterBy.amount !== undefined) gFilterBy.amount = filterBy.amount
-    return gFilterBy
+function getDefaultFilter() {
+    return {txt: '',minPrice: 0 }
 }
 
 function getNextBookId(bookId) {
