@@ -1,20 +1,26 @@
 //Long Txt
 
-import { useState } from "react";
+const { useState } = React
 
-export function LongTxt({ text, maxLength = 100 }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export function LongTxt({ txt, length = 100 }) {
+    const [isShowLong, setIsShowLong] = useState(false)
 
-  const toggleText = () => setIsExpanded(!isExpanded);
+    function onToggleIsShowLong() {
+        setIsShowLong(isShowLong => !isShowLong)
+    }
 
-  if (text.length <= maxLength) return <p>{text}</p>;
-
-  return (
-    <p>
-      {isExpanded ? text : text.substring(0, maxLength) + "..."}
-      <button onClick={toggleText}>
-        {isExpanded ? "קרא פחות" : "קרא עוד"}
-      </button>
-    </p>
-  );
+    const isLongText = txt.length > length
+    const textToShow = isShowLong ? txt : (txt.substring(0, length))
+    return (
+        <section className="long-txt">
+            <h4>
+                {textToShow}
+                {isLongText &&
+                    <button onClick={onToggleIsShowLong}>
+                        {isShowLong ? ' Less...' : ' More...'}
+                    </button>
+                }
+            </h4>
+        </section>
+    );
 }
