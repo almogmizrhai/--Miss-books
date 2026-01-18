@@ -17,9 +17,17 @@ export function BookDetails({bookId, onBack}){
             .catch(err => console.log('err:', err))
     }
 
-    
+    function checkPageCount(pageCount){
+        let txt = ''
+        if (pageCount >=500) txt = 'Serious Reading'
+        else if (pageCount >=200) txt = 'Descent Reading'
+        else if (pageCount <=100) txt = 'Light Reading'
+
+        return txt
+    }
+
     if (!book) return <div>Loading...</div>
-    const {title, listPrice} = book
+    const {title, listPrice, pageCount} = book
     return(
         <section className = "book-details">
             <h1>Book Title: {title}</h1>
@@ -27,6 +35,9 @@ export function BookDetails({bookId, onBack}){
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
+            </p>
+            <p>
+                Page Count: {pageCount} - {checkPageCount(pageCount)}
             </p>
             <button onClick={onBack}>Back</button>
         </section>
