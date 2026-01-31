@@ -4,18 +4,28 @@ import { bookService } from "../services/book.service.js"
 import { LongTxt } from "./LongTxt.jsx"
 
 const { useState, useEffect } = React
+const { useParams, useNavigate,Link } = ReactRouterDOM
 
-export function BookDetails({bookId, onBack}){
+export function BookDetails(){
     const [book, setBook] = useState(null)
+    const params = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         loadBooks()
-    },[])
+    },[params.bookId])
 
     function loadBooks(){
-        bookService.get(bookId)
+        bookService.get(params.bookId)
             .then(book => setBook(book))
-            .catch(err => console.log('err:', err))
+            .catch(err =>{
+                console.log('err:', err)
+                navigate('/book')
+            } )
+    }
+
+    function onBack() {
+        navigate('/books')
     }
 
     function checkPageCount(pageCount){
@@ -49,6 +59,7 @@ export function BookDetails({bookId, onBack}){
     }
 
     if (!book) return <div className="loader">Loading...</div>
+
     const {title, listPrice, pageCount, publishedDate, description} = book
     return(
         <section className = "book-details">
@@ -57,10 +68,20 @@ export function BookDetails({bookId, onBack}){
             {listPrice.amount && (
                 <span className="on-sale">🔥 On Sale! 🔥</span>
             )}
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
+            </p>
             <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
             <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
             <p>description:  {description} </p> 
             <button onClick={onBack}>Back</button>
+
+            <section>
+                <button><Link to={`/book/${book.prevBookId}`}>Prev</Link></button>
+                <button><Link to={`/book/${book.nextBookId}`}>Next</Link></button>
+            </section>
+
         </section>
     )
 }

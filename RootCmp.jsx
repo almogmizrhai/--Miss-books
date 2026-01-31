@@ -1,32 +1,35 @@
 //root-cmp
 
-const { useState } = React 
+const Router = ReactRouterDOM.HashRouter
+const { Routes, Route, Navigate } = ReactRouterDOM
 
 import { Home } from './Pages/Home.jsx'
 import { AboutUs } from './Pages/AboutUs.jsx'
 import { BookIndex } from './Pages/BookIndex.jsx'
+import { AppHeader } from './cmps/AppHeader.jsx'
+import { BookDetails } from './cmps/BookDetails.jsx'
+import { NotFound } from './cmps/NotFound.jsx'
+
 
 
 export function App() {
-    const [page , setPage] = useState('home')
 
     return (
+       <Router>
         <section className="app">
-            <header className="app-header">
-                
-                <h1>Miss Books</h1>
-                <nav className= "app-nav">
-                    <a onClick ={() => setPage('home')}>Home</a>
-                    <a onClick ={() => setPage('about')}>About Us</a>
-                    <a onClick ={() => setPage('books')}>Books</a>
-                </nav>
-            
-            </header>
+            <AppHeader />
             <main className="container">
-                {page ==='home' && <Home />}
-                {page ==='about' && <AboutUs />}
-                {page ==='books' && <BookIndex />}
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home"/>} />
+                    <Route path="/home" element={<Home/>} />
+                    <Route path="/about" element={<AboutUs/>} />
+                    <Route path="/books" element={<BookIndex/>} />
+                    <Route path="/book/:bookId" element={<BookDetails />} />
+
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </main>
         </section>
+       </Router> 
     )
 }
