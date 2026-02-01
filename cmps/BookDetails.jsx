@@ -1,4 +1,4 @@
-//Book Details
+//Book Details jsx
 
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "./LongTxt.jsx"

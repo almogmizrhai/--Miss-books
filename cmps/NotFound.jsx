@@ -1,4 +1,7 @@
+//Not Found jsx
+
 const { Link } = ReactRouterDOM
+
 export function NotFound() {
 
     return (

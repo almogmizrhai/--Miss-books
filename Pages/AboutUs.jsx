@@ -1,7 +1,9 @@
+//About Us jsx
+
 export function AboutUs() {
 
     return (
-        <section className="AboutUs container">
+        <section className="about-us">
             <h1>AboutUs Books and us...</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.

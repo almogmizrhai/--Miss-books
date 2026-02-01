@@ -1,6 +1,6 @@
-//Book Edit
+//Book Edit jsx
 
-export function BookEdit{
+export function BookEdit(){
     return(
         <section className="book-edit">
             <h1>test</h1>
