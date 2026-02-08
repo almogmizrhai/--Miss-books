@@ -1,7 +1,9 @@
 //Book Edit jsx
 
+import { UserMsg } from "../cmps/UserMsg.jsx"
 import { bookService } from "../services/book.service.js"
-console.log('bookService:', bookService)
+import { showErrorMsg } from "../services/event-bus.service.js"
+
 
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -52,7 +54,7 @@ export function BookEdit(){
         .catch(err => {
             console.log('err:', err)
             navigate('/books')
-            // showErrorMsg('Can not save the book')
+            showErrorMsg('Can not save the book')
         })
     }
 
