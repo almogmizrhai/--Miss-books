@@ -2,10 +2,6 @@
 
 const {link, NavLink} = ReactRouterDOM
 
-import { Home } from './Pages/Home.jsx'
-import { AboutUs } from './Pages/AboutUs.jsx'
-import { BookIndex } from './Pages/BookIndex.jsx'
-
 export function AppHeader(){
     return (
         <header >
