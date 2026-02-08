@@ -36,16 +36,36 @@ export function BookEdit(){
     }
     
     function handleChange({ target }) {
-        const field = target.name
-        let value = target.value
+        const { name, value, type, checked } = target
         
-        if (target.type === 'number') {
-            value = +value
+        switch (name) {
+            case 'price':
+                setBookToEdit(prev => ({
+                    ...prev,
+                    listPrice: {
+                        ...prev.listPrice,
+                        amount: +value
+                    }
+                }))
+            break;
+            
+            case 'isOnSale':
+                setBookToEdit(prev => ({
+                    ...prev,
+                    listPrice: {
+                        ...prev.listPrice,
+                        isOnSale: checked
+                    }
+                }))
+            break;
+            
+            default:
+                setBookToEdit(prev => ({
+                    ...prev,
+                    [name]: type === 'number' ? +value : value
+                }))
         }
-        
-        setBookToEdit(prevBook => ({...prevBook, [field]: value}))
     }
-
 
     function onSaveBook(ev){
         ev.preventDefault()
@@ -69,18 +89,13 @@ export function BookEdit(){
                 <input value ={title} onChange={handleChange} type="text" name="title" id="title" />
 
                 <label htmlFor="amount">Price</label>
-                <input name="amount" type="number" value={listPrice.amount}
-                onChange={(ev) => {
-                    const value = +ev.target.value
-                    setBookToEdit(prev => ({
-                        ...prev,
-                        listPrice: {
-                            ...prev.listPrice,
-                            amount: value
-                        }
-                    }))
-                }} />
-                
+                <input value={bookToEdit.listPrice.amount} onChange= {handleChange} name="listPrice.amount" type="number"  />
+
+                <label>
+                    <input type="checkbox" name="isOnSale" checked={bookToEdit.listPrice.isOnSale} onChange={handleChange} />
+                    On Sale
+                </label>
+
                 <button disabled={!title}>Save</button>
             </form>
         </section>
