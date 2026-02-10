@@ -99,10 +99,11 @@ export function BookEdit(){
                     <input type="checkbox" name="isOnSale" checked={bookToEdit.listPrice.isOnSale} onChange={handleChange} />
                     On Sale
                 </label>
-
+            </form>
+            <div className="bnt-action">
                 <button onClick={onBack}>Back</button>
                 <button disabled={!title}>Save</button>
-            </form>
+            </div>
         </section>
     )
 }

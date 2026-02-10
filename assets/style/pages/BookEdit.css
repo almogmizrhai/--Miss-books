@@ -28,3 +28,8 @@
 .book-edit h2 {
     margin-block-end: 20px;
 }
+
+.bnt-action{
+    display: flex;
+    justify-content: space-between;
+}
