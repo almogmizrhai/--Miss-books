@@ -34,6 +34,10 @@ export function BookEdit(){
             })
             .finally(() => setIsLoading(false))
     }
+
+    function onBack() {
+        navigate('/books')
+    }
     
     function handleChange({ target }) {
         const { name, value, type, checked } = target
@@ -96,6 +100,7 @@ export function BookEdit(){
                     On Sale
                 </label>
 
+                <button onClick={onBack}>Back</button>
                 <button disabled={!title}>Save</button>
             </form>
         </section>

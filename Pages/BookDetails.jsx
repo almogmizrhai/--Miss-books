@@ -1,7 +1,9 @@
 //Book Details jsx
 
 import { bookService } from "../services/book.service.js"
-import { LongTxt } from "./LongTxt.jsx"
+import { LongTxt } from "../cmps/LongTxt.jsx"
+import { AddReview } from "../cmps/AddReview.jsx"
+
 
 const { useState, useEffect } = React
 const { useParams, useNavigate,Link } = ReactRouterDOM
@@ -74,7 +76,8 @@ export function BookDetails(){
             </p>
             <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
             <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
-            <p>description:  {description} </p> 
+            <p>description:  {description} </p>
+            <button onClick={AddReview}>Add Review</button> 
             <button onClick={onBack}>Back</button>
 
             <section>
