@@ -5,15 +5,14 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-
-    margin-block-start: 20px;
+    margin: 20px 10px;    
     border-radius: 15px;
-
     padding: 10px;
     background: #81cde0c7;
 
     .btn-action{
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
         gap: 10px;
         margin: 5px;
     }
