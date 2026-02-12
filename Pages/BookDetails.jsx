@@ -78,9 +78,9 @@ export function BookDetails(){
             <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
             <p>description:  {description} </p>
             <button> <Link to={`/book/${book.id}/review`}>Add Review</Link></button> 
-            <button onClick={onBack}>Back</button>
 
-            <section>
+            <section className="btn-action">
+                <button onClick={onBack}>Back</button>
                 <button><Link to={`/book/${book.prevBookId}`}>Prev</Link></button>
                 <button><Link to={`/book/${book.nextBookId}`}>Next</Link></button>
             </section>

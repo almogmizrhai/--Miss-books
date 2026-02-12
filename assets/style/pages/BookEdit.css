@@ -5,6 +5,7 @@
     margin-block-start: 30px;
     padding: 20px;
     background-color: rgba(180, 188, 204, 0.514);
+    border-radius: 15px;
 }
 
 .book-edit form {

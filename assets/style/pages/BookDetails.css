@@ -11,6 +11,17 @@
 
     padding: 10px;
     background: #81cde0c7;
+
+    .btn-action{
+        display: flex;
+        gap: 10px;
+        margin: 5px;
+    }
+
+    p,
+    button{
+        align-self: baseline;
+    }
 }
 
 .book-details .book-details-nav {

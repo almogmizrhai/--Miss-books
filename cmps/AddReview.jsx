@@ -3,12 +3,15 @@
 import { UserMsg } from "../cmps/UserMsg.jsx"
 import { bookService } from "../services/book.service.js"
 
-
+const { useNavigate, useParams } = ReactRouterDOM
 const { useState } = React
 
 export function AddReview(){
     
     const [review, setReview] = useState(bookService.getEmptyReview())
+
+    const navigate = useNavigate()
+    const {bookId} = useParams()
 
     function handleChange({ target }) {
         const { name, value } = target
@@ -20,7 +23,7 @@ export function AddReview(){
     }
 
     function onBack() {
-        navigate('/book/:bookId')
+        navigate(`/book/${bookId}`)
     }
 
     function onSave(){
