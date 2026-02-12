@@ -14,6 +14,7 @@ export const bookService = {
     getEmptyBook,
     getNextBookId,
     getDefaultFilter,
+    getEmptyReview,
 }
 
 function query(filterBy = {}) {
@@ -34,7 +35,15 @@ function query(filterBy = {}) {
         .catch(err => console.log('err:', err))
 }
 
-
+function getEmptyReview(){
+    return {
+        fullName: '',
+        rating: 0,
+        readAt: new Date().toISOString().slice(0, 10),
+        txt: '',
+        selected: 0,
+    }
+}
 
 function get(bookId) {
     return storageService.get(BOOK_KEY, bookId)

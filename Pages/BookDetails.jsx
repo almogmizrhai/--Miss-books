@@ -77,7 +77,7 @@ export function BookDetails(){
             <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
             <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
             <p>description:  {description} </p>
-            <button onClick={AddReview}>Add Review</button> 
+            <button> <Link to={`/book/${book.id}/review`}>Add Review</Link></button> 
             <button onClick={onBack}>Back</button>
 
             <section>
