@@ -3,6 +3,8 @@
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
 import { AddReview } from "../cmps/AddReview.jsx"
+import { ReviewList } from "../cmps/ReviewList.jsx"
+
 
 
 const { useState, useEffect } = React
@@ -62,29 +64,35 @@ export function BookDetails(){
 
     if (!book) return <div className="loader">Loading...</div>
 
-    const {title, listPrice, pageCount, publishedDate, description} = book
+    const {title, listPrice, pageCount, publishedDate, description, reviews =[]} = book
     return(
-        <section className = "book-details">
-            <h1>Book Title: {title}</h1>
-            <h2>Book Price: <span className={checkPrice(listPrice.amount)}> {listPrice.amount}</span> </h2>
-            {listPrice.amount && (
-                <span className="on-sale">🔥 On Sale! 🔥</span>
-            )}
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
-            </p>
-            <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
-            <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
-            <p>description:  {description} </p>
-            <button> <Link to={`/book/${book.id}/review`}>Add Review</Link></button> 
-
-            <section className="btn-action">
-                <button onClick={onBack}>Back</button>
-                <button><Link to={`/book/${book.prevBookId}`}>Prev</Link></button>
-                <button><Link to={`/book/${book.nextBookId}`}>Next</Link></button>
+        <React.Fragment>
+            <section className = "book-details">
+                <h1>Book Title: {title}</h1>
+                <h2>Book Price: <span className={checkPrice(listPrice.amount)}> {listPrice.amount}</span> </h2>
+                {listPrice.amount && (
+                    <span className="on-sale">🔥 On Sale! 🔥</span>
+                )}
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolorum aliquam quibusdam corrupti? Minus, ad tenetur!
+                </p>
+                <p> Page Count: {pageCount} - {checkPageCount(pageCount)} </p>
+                <p> Published Date: {publishedDate} {checkPublishedDate(publishedDate)} </p>
+                <p>description:  {description} </p>
+                <button> <Link to={`/book/${book.id}/review`}>Add Review</Link></button> 
+                
+                <section className="btn-action">
+                    <button onClick={onBack}>Back</button>
+                    <button><Link to={`/book/${book.prevBookId}`}>Prev</Link></button>
+                    <button><Link to={`/book/${book.nextBookId}`}>Next</Link></button>
+                </section>
             </section>
-
-        </section>
+            <section className= {`books-review ${!book.reviews ? 'hide' : ''}`} >
+                <h1>Book Reviews:</h1>                
+                <ReviewList reviews={book.reviews}/>
+            </section>
+            </React.Fragment>
+        
     )
 }

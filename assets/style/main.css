@@ -29,3 +29,5 @@
 @import './cmps/StarRating.css';
 @import './cmps/UserMsg.css';
 @import './cmps/AddBook.css';
+@import './cmps/ReviewList.css';
+@import './cmps/ReviewDetails.css';
