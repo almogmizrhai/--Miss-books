@@ -7,7 +7,7 @@
     border-radius: 10px;
     background-color: #758ec37a;
 
-    form{
+    .review-form{
         display: grid;
         gap: 10px;
         margin: inherit;
@@ -24,6 +24,20 @@
             color: grey;
             border-radius: 5px;
             border: 1px solid black;
+        }
+
+        .btn-action{
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: space-between;
+
+            .btn{
+                width: fit-content;
+            }
+
+            :disabled{
+                cursor: not-allowed;
+            }
         }
     }
 }

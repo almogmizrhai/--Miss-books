@@ -2,12 +2,13 @@
 
 import { UserMsg } from "../cmps/UserMsg.jsx"
 import { bookService } from "../services/book.service.js"
+import { StarRating } from "./StarRating.jsx"
 
 const { useNavigate, useParams } = ReactRouterDOM
-const { useState } = React
+const { useState, useEffect  } = React
 
 export function AddReview(){
-    
+
     const [review, setReview] = useState(bookService.getEmptyReview())
 
     const navigate = useNavigate()
@@ -26,15 +27,21 @@ export function AddReview(){
         navigate(`/book/${bookId}`)
     }
 
-    function onSave(){
+    function onSaveReview(ev){
+        ev.preventDefault()
         console.log('review:', review)
+        
+        bookService.addReview(bookId, review)
+            .then(()=>{
+                navigate(`/book/${bookId}`)
+            })
     }
 
     const { fullName, readAt, txt, rating } = review
     return(
         <section className="review-add">
             <h1>Add Review: </h1>
-            <form>
+            <form onSubmit={onSaveReview} className="review-form"> 
                 <label htmlFor="fullName">Full Name</label>
                 <input value ={fullName} onChange={handleChange} type="text" name="fullName" id="fullName" placeholder="Full Name" />
 
@@ -51,13 +58,13 @@ export function AddReview(){
                 <input value ={readAt} onChange={handleChange} type="date" name="readAt" id="readAt" />
 
                 <label htmlFor="txt">Book Review</label>
-                <textarea value ={txt} onChange={handleChange} type="text" name="txt" id="txt" placeholder="Book Review" />
+                <textarea value ={txt} onChange={handleChange}  name="txt" id="txt" placeholder="Book Review" />
+                
+                <div className="btn-action">
+                    <button className="btn" type="button" onClick={onBack}>Back</button>
+                    <button disabled={!fullName && !rating && !txt} className="btn">Save</button>
+                </div>
             </form>
-
-            <div className="bnt-action">
-                <button onClick={onBack}>Back</button>
-                <button disabled={!fullName} onClick={onSave}>Save</button>
-            </div>
         </section>
     )
 }
