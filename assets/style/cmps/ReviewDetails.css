@@ -4,4 +4,5 @@
     display: grid;
     background-color: var(--clr2bg);
     border-radius: 15px;
+    width: fit-content;
 }

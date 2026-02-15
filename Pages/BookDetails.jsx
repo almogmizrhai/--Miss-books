@@ -61,6 +61,13 @@ export function BookDetails(){
 
         return priceTag
     }
+    
+    function onRemoveReview(bookId, reviewId) {
+        bookService.removeReview(bookId, reviewId)
+            .then(updatedBook => setBook(updatedBook))
+            .catch(err => console.log('err:', err))
+    }
+
 
     if (!book) return <div className="loader">Loading...</div>
 
@@ -90,7 +97,7 @@ export function BookDetails(){
             </section>
             <section className= {`books-review ${!book.reviews ? 'hide' : ''}`} >
                 <h1>Book Reviews:</h1>                
-                <ReviewList reviews={book.reviews}/>
+                <ReviewList reviews={book.reviews} removeReview={onRemoveReview}/>
             </section>
             </React.Fragment>
         

@@ -28,9 +28,7 @@ export function AddReview(){
     }
 
     function onSaveReview(ev){
-        ev.preventDefault()
-        console.log('review:', review)
-        
+        ev.preventDefault()        
         bookService.addReview(bookId, review)
             .then(()=>{
                 navigate(`/book/${bookId}`)
