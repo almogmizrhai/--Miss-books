@@ -13,6 +13,7 @@ export const bookService = {
     save,
     getEmptyBook,
     getNextBookId,
+    getPrevBookId,
     getDefaultFilter,
     getEmptyReview,
     addReview,
@@ -91,6 +92,7 @@ function getDefaultFilter() {
     return {txt: '',minPrice: 0 }
 }
 
+
 function getNextBookId(bookId) {
     return storageService.query(BOOK_KEY)
         .then(books => {
@@ -99,6 +101,16 @@ function getNextBookId(bookId) {
             return books[nextBookIdx].id
         })
 }
+
+function getPrevBookId(bookId) {
+    return storageService.query(BOOK_KEY)
+        .then(books => {
+            let prevBookIdx = books.findIndex(book => book.id === bookId) - 1
+            if (prevBookIdx < 0) prevBookIdx = books.length - 1
+            return books[prevBookIdx].id
+        })
+}
+
 
 // ~~~~~~~~~~~~~~~~LOCAL FUNCTIONS~~~~~~~~~~~~~~~~~~~
 

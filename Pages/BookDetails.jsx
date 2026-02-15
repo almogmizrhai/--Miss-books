@@ -12,6 +12,8 @@ const { useParams, useNavigate,Link } = ReactRouterDOM
 
 export function BookDetails(){
     const [book, setBook] = useState(null)
+    const [nextBookId, setNextBookId] = useState(null)
+    const [prevBookId, setPrevBookId] = useState(null)
     const params = useParams()
     const navigate = useNavigate()
 
@@ -19,13 +21,23 @@ export function BookDetails(){
         loadBooks()
     },[params.bookId])
 
-    function loadBooks(){
-        bookService.get(params.bookId)
-            .then(book => setBook(book))
-            .catch(err =>{
-                console.log('err:', err)
-                navigate('/book')
-            } )
+    function loadBooks() {
+    bookService.get(params.bookId)
+        .then(book => {
+            setBook(book)
+            return Promise.all([
+                bookService.getNextBookId(book.id),
+                bookService.getPrevBookId(book.id)
+            ])
+        })
+        .then(([nextId, prevId]) => {
+            setNextBookId(nextId)
+            setPrevBookId(prevId)
+        })
+        .catch(err => {
+            console.log('err:', err)
+            navigate('/books')
+        })
     }
 
     function onBack() {
@@ -91,8 +103,8 @@ export function BookDetails(){
                 
                 <section className="btn-action">
                     <button onClick={onBack}>Back</button>
-                    <button><Link to={`/book/${book.prevBookId}`}>Prev</Link></button>
-                    <button><Link to={`/book/${book.nextBookId}`}>Next</Link></button>
+                    <button><Link to={`/book/${prevBookId}`}>Prev</Link></button>
+                    <button><Link to={`/book/${nextBookId}`}>Next</Link></button>
                 </section>
             </section>
             <section className= {`books-review ${!book.reviews ? 'hide' : ''}`} >
