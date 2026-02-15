@@ -14,6 +14,9 @@ export const bookService = {
     getEmptyBook,
     getNextBookId,
     getDefaultFilter,
+    getEmptyReview,
+    addReview,
+    removeReview,
 }
 
 function query(filterBy = {}) {
@@ -34,7 +37,35 @@ function query(filterBy = {}) {
         .catch(err => console.log('err:', err))
 }
 
+function getEmptyReview(){
+    return {
+        id: utilService.makeId(),
+        fullName: '',
+        rating: 0,
+        readAt: new Date().toISOString().slice(0, 10),
+        txt: '',
+        selected: 0,
+    }
+}
 
+function addReview(bookId, review) {
+    return get(bookId).then(book => {
+        if (!book.reviews) book.reviews = []
+
+        review.id = utilService.makeId()
+        book.reviews.push(review)
+
+        return save(book)
+    })
+}
+
+function removeReview(bookId, reviewId) {
+    return get(bookId).then(book => {
+        const newReviews = book.reviews.filter((review) => review.id !== reviewId)
+        book.reviews = newReviews
+        return save(book)
+    })
+}
 
 function get(bookId) {
     return storageService.get(BOOK_KEY, bookId)
@@ -69,6 +100,15 @@ function getNextBookId(bookId) {
         })
 }
 
+// ~~~~~~~~~~~~~~~~LOCAL FUNCTIONS~~~~~~~~~~~~~~~~~~~
+
+function _createReview(reviewToSave) {
+    return {
+        id: utilService.makeId(),
+        ...reviewToSave,
+    }
+}
+
 function _createBooks() {
      let books = utilService.loadFromStorage(BOOK_KEY)
     if (!books || !books.length) {
@@ -92,7 +132,8 @@ function _createBooks() {
                     amount: utilService.getRandomIntInclusive(80, 500), 
                     currencyCode: "EUR", 
                     isOnSale: Math.random() > 0.7 
-                } 
+                } ,
+                reviews: [],
             } 
             books.push(book) 
         } 

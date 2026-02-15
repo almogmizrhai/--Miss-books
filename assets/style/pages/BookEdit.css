@@ -2,9 +2,10 @@
 
 .book-edit {
     justify-self: center;
-    margin-block-start: 30px;
+    margin: 20px 10px;
     padding: 20px;
     background-color: rgba(180, 188, 204, 0.514);
+    border-radius: 15px;
 }
 
 .book-edit form {
@@ -27,4 +28,9 @@
 
 .book-edit h2 {
     margin-block-end: 20px;
+}
+
+.bnt-action{
+    display: flex;
+    justify-content: space-between;
 }

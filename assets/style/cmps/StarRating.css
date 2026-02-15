@@ -26,7 +26,7 @@
 }
 
 .star-rating .off {
-    color: #101010;
+    color: var(--clr1);
 }
 
 .star-rating.edit .off {

@@ -5,12 +5,23 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-
-    margin-block-start: 20px;
+    margin: 20px 10px;    
     border-radius: 15px;
-
     padding: 10px;
-    background: #81cde0c7;
+    background: var(--clr1bg);
+    color: var(--clr2);
+
+    .btn-action{
+        display: grid;
+        grid-auto-flow: column;
+        gap: 10px;
+        margin: 5px;
+    }
+
+    p,
+    button{
+        align-self: baseline;
+    }
 }
 
 .book-details .book-details-nav {
@@ -52,4 +63,13 @@
     height: 2px;
     background: black;
     width: 100%;
+}
+
+
+.hide{
+    display: none;
+}
+
+.books-review{
+    padding: 0px 80px;
 }

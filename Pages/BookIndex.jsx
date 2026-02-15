@@ -1,6 +1,6 @@
 //Book Index jsx
 
-import { BookDetails } from "../cmps/BookDetails.jsx"
+import { BookDetails } from "./BookDetails.jsx"
 import { BookFilter } from "../cmps/BookFilter.jsx"
 import { BookList } from "../cmps/BookList.jsx"
 import {bookService} from "../services/book.service.js"
@@ -25,7 +25,6 @@ export function BookIndex(){
             .catch(err => console.log('err:', err))
     }
 
-    console.log('books:', books)
     if (!books) return <div className="loader">Loading...</div>
 
     function onRemoveBook(bookId, {target}){
@@ -40,7 +39,6 @@ export function BookIndex(){
     }
 
     function onSelectBookId(bookId){
-        console.log('bookId:',bookId)
         setSelectBookId(bookId)
     }
 

@@ -34,6 +34,10 @@ export function BookEdit(){
             })
             .finally(() => setIsLoading(false))
     }
+
+    function onBack() {
+        navigate('/books')
+    }
     
     function handleChange({ target }) {
         const { name, value, type, checked } = target
@@ -95,9 +99,11 @@ export function BookEdit(){
                     <input type="checkbox" name="isOnSale" checked={bookToEdit.listPrice.isOnSale} onChange={handleChange} />
                     On Sale
                 </label>
-
-                <button disabled={!title}>Save</button>
             </form>
+            <div className="bnt-action">
+                <button onClick={onBack}>Back</button>
+                <button disabled={!title}>Save</button>
+            </div>
         </section>
     )
 }

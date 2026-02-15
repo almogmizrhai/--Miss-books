@@ -2,12 +2,13 @@
 
 .books-filter {
     padding: 10px;
-    background: #7480C9;
+    background: var(--clr2bg);
     border-radius: 5px;
     display: grid;
     align-items: center;
     justify-content: center;
     gap: 5px;
+    color: var(--clr2);
 
     input{
         border-radius: inherit;
