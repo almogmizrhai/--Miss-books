@@ -3,7 +3,7 @@
 .books-filter {
     padding: 10px;
     background: var(--clr2bg);
-    border-radius: 5px;
+    /* border-radius: 5px; */
     display: grid;
     align-items: center;
     justify-content: center;
