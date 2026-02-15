@@ -5,7 +5,8 @@
     padding: 10px;
     margin: 20px 10px;
     border-radius: 10px;
-    background-color: #758ec37a;
+    background-color: var(--clr1bg);
+    color: var(--clr2);
 
     .review-form{
         display: grid;

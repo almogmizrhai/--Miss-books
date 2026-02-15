@@ -8,7 +8,8 @@
     margin: 20px 10px;    
     border-radius: 15px;
     padding: 10px;
-    background: #81cde0c7;
+    background: var(--clr1bg);
+    color: var(--clr2);
 
     .btn-action{
         display: grid;

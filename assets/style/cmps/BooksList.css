@@ -13,7 +13,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: #7480C9;
+    background-color: var(--clr2bg);
+    color: var(--clr2);
     border-radius: 8px;
     min-height: 400px;
     --animate-duration: 0.4s;

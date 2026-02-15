@@ -17,6 +17,7 @@
 @import './pages/BookDetails.css';
 @import './pages/BookEdit.css';
 @import './pages/NotFound.css';
+@import './pages/AddReview.css';
 
 
 /* Components */
@@ -25,7 +26,6 @@
 @import './cmps/BookPreview.css';
 @import './cmps/BookFilter.css';
 @import './cmps/BookDetails.css';
-@import './cmps/AddReview.css';
 @import './cmps/StarRating.css';
 @import './cmps/UserMsg.css';
 @import './cmps/AddBook.css';
