@@ -2,7 +2,7 @@
 
 import { bookService } from "../services/book.service.js"
 import { LongTxt } from "../cmps/LongTxt.jsx"
-import { AddReview } from "../cmps/AddReview.jsx"
+import { AddReview } from "./AddReview.jsx"
 import { ReviewList } from "../cmps/ReviewList.jsx"
 
 

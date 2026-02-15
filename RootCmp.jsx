@@ -11,7 +11,7 @@ import { BookDetails } from './Pages/BookDetails.jsx'
 import { BookEdit } from './Pages/BookEdit.jsx'
 import { NotFound } from './cmps/NotFound.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
-import { AddReview } from './cmps/AddReview.jsx'
+import { AddReview } from './Pages/AddReview.jsx'
 
 
 

@@ -2,7 +2,7 @@
 
 import { UserMsg } from "../cmps/UserMsg.jsx"
 import { bookService } from "../services/book.service.js"
-import { StarRating } from "./StarRating.jsx"
+import { StarRating } from "../cmps/StarRating.jsx"
 
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect  } = React
@@ -44,13 +44,7 @@ export function AddReview(){
                 <input value ={fullName} onChange={handleChange} type="text" name="fullName" id="fullName" placeholder="Full Name" />
 
                 <label htmlFor="rating">Rating </label>
-                <select name="rating"  value ={rating} onChange={handleChange}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+                <StarRating rating={review.rating} handleChange={handleChange}/>
 
                 <label htmlFor="readAt">Read At</label>
                 <input value ={readAt} onChange={handleChange} type="date" name="readAt" id="readAt" />
